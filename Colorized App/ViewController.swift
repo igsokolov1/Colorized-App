@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillLayoutSubviews() {
+        mainView.layer.cornerRadius = mainView.frame.width / 20
+    }
+    
     @IBAction func redSliderAction(_ sender: UISlider) {
         redSliderLabel.text = String(format: "%.2f", redSlider.value)
         colorChanging()
