@@ -8,50 +8,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet var mainView: UIView!
+    
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    
+    @IBOutlet var redSliderLabel: UILabel!
+    @IBOutlet var greenSliderLabel: UILabel!
+    @IBOutlet var blueSliderLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpRedSlider()
-        setUpGreenSlider()
-        setUpBlueSlider()
     }
+    
     @IBAction func redSliderAction(_ sender: UISlider) {
-        
+        redSliderLabel.text = String(format: "%.2f", redSlider.value)
+        colorChanging()
     }
     @IBAction func greenSliderAction(_ sender: UISlider) {
-        
+        greenSliderLabel.text = String(format: "%.2f", greenSlider.value)
+        colorChanging()
     }
     @IBAction func blueSliderAction(_ sender: UISlider) {
+        blueSliderLabel.text = String(format: "%.2f", blueSlider.value)
+        colorChanging()
     }
     
     // MARK: - Private Methods
-    
-    private func setUpRedSlider() {
-        redSlider.value = 0.5
-        redSlider.minimumValue = 0
-        redSlider.maximumValue = 1
-        redSlider.minimumTrackTintColor = .red
+    private func colorChanging() {
+        mainView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
     }
-    
-    private func setUpGreenSlider() {
-        greenSlider.value = 0.5
-        greenSlider.minimumValue = 0
-        greenSlider.maximumValue = 1
-        greenSlider.minimumTrackTintColor = .green
-    }
-    
-    private func setUpBlueSlider() {
-        blueSlider.value = 0.5
-        blueSlider.minimumValue = 0
-        blueSlider.maximumValue = 1
-        blueSlider.minimumTrackTintColor = .blue
-    }
-
 }
 
